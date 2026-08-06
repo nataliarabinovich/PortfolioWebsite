@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="top-right-links" aria-label="Contact links">
+    <a class="icon-link" href="https://www.linkedin.com/in/natalia-rabinovich-868710273/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+      <img src="assets/linkedin.svg" alt="LinkedIn icon" />
+    </a>
+    <a class="icon-link" href="mailto:natalia.rabinovich@icloud.com" aria-label="Email">
+      <img src="assets/email.svg" alt="Email icon" />
+    </a>
+  </div>
+
+  <header class="site-nav hidden" id="siteNav">
+    <nav class="nav-buttons">
+      <div class="nav-indicator" aria-hidden="true"></div>
+      <button class="nav-button" data-page="home" id="navHome">Home</button>
+      <button class="nav-button nav-button--active" data-page="projects" id="navProjects">Projects</button>
+      <button class="nav-button" data-page="resume" id="navResume">Resume</button>
+      <button class="nav-button" data-page="other" id="navOther">Other experiences</button>
+    </nav>
+  </header>
+
+  <main class="page page--home" id="homePage">
+      <section class="hero">
+        <div class="hero__content">
+          <div class="hero__intro">
+            <div class="hero__photo-wrap" aria-label="Portrait">
+              <img class="hero__photo" src="assets/headshot.jpeg" alt="Portrait" />
+            </div>
+            <div class="hero__hero-copy">
+              <div class="hero__copy-text">
+                <p class="hero__text"><span class="hero__lead">Hi! I'm Natalia</span> I'm an aerospace engineering student at the Rutgers University Honors College. I'm passionate about spacecraft systems, analysis, and hands-on design. This portfolio highlights the projects, research, and experiences that have shaped me as an engineer.</p>
+              </div>
+              <div class="hero__actions">
+                <button class="button button--primary" id="viewProjectsBtn">View my projects →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <main class="page page--content hidden" id="contentPages">
+      <section class="content-section" id="projectsPage">
+      <div class="section-header">
+        <h2>Projects</h2>
+      </div>
+      <article class="project project--right">
+        <div class="project__image-wrap project__carousel">
+          <button class="carousel__control carousel__control--left" type="button" aria-label="Previous image">‹</button>
+          <div class="carousel__viewport">
+            <div class="carousel__track"></div>
+          </div>
+          <div class="carousel__sources" hidden>
+            <span data-src="assets/thermal1.png"></span>
+            <span data-src="assets/thermal2.png"></span>
+            <span data-src="assets/thermal3.png"></span>
+            <span data-src="assets/thermal4.png"></span>
+            <span data-src="assets/thermal5.png"></span>
+          </div>
+          <button class="carousel__control carousel__control--right" type="button" aria-label="Next image">›</button>
+          <div class="carousel__progress">
+            <span class="carousel__progress-bar" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="project__text">
+          <h3>Thermal Modeling & Analysis</h3>
+          <p class="project__date">Summer 2026</p>
+          <p> During Summer 2026, I led a four-member team advancing the thermal design of Rutgers’ SPICEsat CubeSat fluid payload. Our work focused on selecting a space-compatible working fluid, evaluating heater configurations, and improving the spacecraft’s Thermal Desktop model. We compared candidate fluids across thermal, safety, compatibility, and integration criteria, then used MATLAB and orbital simulations to evaluate temperature behavior under hot and cold-case conditions. The project strengthened the mission’s thermal-control strategy and supported preparation for Critical Design Review.</p>
+          <br>
+          <p>Slide 1: ISS orbit cold case temperature contour</p>
+          <p>Slide 2: ISS orbit cold case plot of satellite temperature over time</p>
+          <p>Slide 3: ISS orbit hot case temperature contour</p>
+          <p>Slide 4: ISS orbit hot case plot of satellite temperature over time</p>
+          <p>Slide 5: 10 W Thermal Desktop case set run after model correlation</p>
+        </div>
+      </article>
+      <article class="project project--left">
+        <div class="project__text">
+          <h3>Autonomous Docking Robot</h3>
+          <p class="project__date">May 2026</p>
+          <p>Designed and built an autonomous docking robot that uses an Arduino, ultrasonic distance sensing, variable motor speeds, LED status indicators, and a servo-driven clasp to approach and connect to a target without manual control. I developed closed-loop control logic that slowed the robot through multiple distance zones before stopping and deploying the docking mechanism. I also designed a custom SolidWorks mount for 3D printing, troubleshooted weight distribution and wheel alignment, and refined the stopping distance to achieve reliable docking without colliding with the target.</p>
+          <br>
+          <p>Slide 1: Complete physical wiring and pin connections; custom mount shown housing the breadboard, sensor, and motor</p>
+          <p>Slide 2: Troubleshooting; tried to cut two pieces of cardboard to act as a sled for the bottom of the Arduino Board but only made movement more difficult</p>
+          <p>Slide 3: View of motor successfuly docking to target</p>
+          <p>Slide 4: Full wiring diagram showing exact pin connections</p>
+          <p>Slide 5: Video demonstration</p>
+        </div>
+        <div class="project__image-wrap project__carousel">
+          <button class="carousel__control carousel__control--left" type="button" aria-label="Previous image">‹</button>
+          <div class="carousel__viewport">
+            <div class="carousel__track"></div>
+          </div>
+          <div class="carousel__sources" hidden>
+            <span data-src="assets/mech1.png"></span>
+            <span data-src="assets/mech2.jpg"></span>
+            <span data-src="assets/mech3.png"></span>
+            <span data-src="assets/mech4.png"></span>
+            <span data-src="assets/mechvid.mp4"></span>
+          </div>
+          <button class="carousel__control carousel__control--right" type="button" aria-label="Next image">›</button>
+          <div class="carousel__progress">
+            <span class="carousel__progress-bar" aria-hidden="true"></span>
+          </div>
+        </div>
+      </article>
+      <article class="project project--left">
+        <div class="project__text">
+          <h3>CAD Claw Machine</h3>
+          <p class="project__date">April 2026</p>
+          <p>Designed a functional claw machine mechanism in SolidWorks, integrating gear systems, linear motion, and motor-driven components. The system simulates real-world motion including horizontal translation, vertical extension, and claw actuation. I gained skills in SolidWorks assemblies & motion study, gear systems/rack and pinion, mechanical constraints, mates, and debugging interference.</p>
+          <br>
+          <p>Slide 1: Fully assembly</p>
+          <p>Slide 2: Claw close-up
+          <p>Slide 4: Gantry</p>
+          <p>Slide 5: Door & Hinge</p>
+        </div>
+        <div class="project__image-wrap project__carousel">
+          <button class="carousel__control carousel__control--left" type="button" aria-label="Previous image">‹</button>
+          <div class="carousel__viewport">
+            <div class="carousel__track"></div>
+          </div>
+          <div class="carousel__sources" hidden>
+            <span data-src="assets/cad1.png"></span>
+            <span data-src="assets/cad2.png"></span>
+            <span data-src="assets/cad3.png"></span>
+            <span data-src="assets/cad4.png"></span>
+          </div>
+          <button class="carousel__control carousel__control--right" type="button" aria-label="Next image">›</button>
+          <div class="carousel__progress">
+            <span class="carousel__progress-bar" aria-hidden="true"></span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="content-section hidden" id="resumePage">
+      <div class="resume-image-wrap">
+        <img src="assets/resume.png" alt="Resume screenshot" />
+        <a class="button button--primary resume-download" href="assets/resume.pdf" download="Natalia_Rabinovich_Resume.pdf">Download resume</a>
+      </div>
+    </section>
+
+    <section class="content-section hidden" id="otherPage">
+      <div class="section-header">
+        <h2>Other experiences</h2>
+      </div>
+      <article class="project project--left">
+        <div class="project__text">
+          <h3>Satellite Fabrication Course</h3>
+          <p class="project__date">August 3–5, 2026 · Albuquerque, New Mexico</p>
+          <p>SatFab was a three-day, hands-on satellite fabrication course hosted by the University Nanosatellite Program (UNP). Through presentations, demonstrations, and lab exercises, I gained practical experience in soldering, mechanical fabrication, wire-harness creation, cleanroom and tool-control procedures, staking, potting, conformal coating, and satellite operations. I plan to bring these skills back to Rutgers and apply them to the assembly, integration, testing, and operation of our CubeSat.</p>
+        </div>
+        <div class="project__image-wrap project__carousel">
+          <video class="project__video" controls>
+            <source src="assets/fidgetspinnervideo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </article>
+      <article class="project project--right">
+        <div class="project__image-wrap project__carousel">
+          <button class="carousel__control carousel__control--left" type="button" aria-label="Previous image">‹</button>
+          <div class="carousel__viewport">
+            <div class="carousel__track"></div>
+          </div>
+          <div class="carousel__sources" hidden>
+            <span data-src="assets/smallsatlogo.png"></span>
+          </div>
+          <button class="carousel__control carousel__control--right" type="button" aria-label="Next image">›</button>
+          <div class="carousel__progress">
+            <span class="carousel__progress-bar" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="project__text">
+          <h3>Small Satellite Conference</h3>
+          <p class="project__date">Upcoming <span class="project__date-divider">|</span> August 23-26, 2026 · Salt Lake City, Utah</p>
+          <p>The Small Satellite Conference agenda spans four days of technical sessions, networking, and industry engagement. Programming will include research and academia sessions, enterprise sessions, poster presentations, exhibits, side meetings, flash talks, NASA short talks, and a keynote presentation.</p>
+          <br>
+          <p>Attending will help me bring current design approaches, testing practices, and lessons from other small-satellite missions back to the SPICEsat team.</p>
+        </div>
+      </article>
+      <article class="project project--left">
+        <div class="project__text">
+          <h3>SpaceVision Conference</h3>
+          <p class="project__date">Upcoming <span class="project__date-divider">|</span> November 5-7, 2026 · Tempe, Arizona</p>
+          <p>SpaceVision is a student-led technical space conference centered on emerging research, exploration systems, and the future of the space industry. The agenda includes sessions on the Artemis program, Mars analog research, lunar landers and infrastructure, high-cadence launch systems, in-space manufacturing, communications and telemetry, planetary defense, nuclear propulsion, and the human demands of deep-space missions.</p>
+          <br>
+          <p>The conference will also provide direct access to researchers, engineers, laboratories, and employers through private tours, technical networking sessions, a career fair, and workshops on communicating technical experience. I plan to bring relevant lessons and new perspectives back to the SPICEsat team to strengthen our design decisions, technical reviews, and understanding of how university spacecraft projects connect to larger exploration missions.</p>
+        </div>
+        <div class="project__image-wrap project__carousel">
+          <button class="carousel__control carousel__control--left" type="button" aria-label="Previous image">‹</button>
+          <div class="carousel__viewport">
+            <div class="carousel__track"></div>
+          </div>
+          <div class="carousel__sources" hidden>
+            <span data-src="assets/spacevisionlogo.png"></span>
+          </div>
+          <button class="carousel__control carousel__control--right" type="button" aria-label="Next image">›</button>
+          <div class="carousel__progress">
+            <span class="carousel__progress-bar" aria-hidden="true"></span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
