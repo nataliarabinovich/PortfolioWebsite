@@ -218,8 +218,6 @@ navButtons.forEach((button) => {
 window.addEventListener('load', () => {
   const activeButton = navButtons.find((button) => button.classList.contains('nav-button--active'));
   updateNavIndicator(activeButton);
-  buildCarousel();
-  updateCarousel();
 });
 
 setPage('home');
