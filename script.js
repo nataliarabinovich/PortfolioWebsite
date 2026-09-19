@@ -8,6 +8,98 @@ const viewProjectsBtn = document.getElementById('viewProjectsBtn');
 const navButtons = Array.from(document.querySelectorAll('.nav-button'));
 const navIndicator = document.querySelector('.nav-indicator');
 const carouselInstances = Array.from(document.querySelectorAll('.project__carousel'));
+const shootingStar = document.querySelector('.shooting-star');
+const starfield = document.querySelector('.starfield');
+
+function renderStarfield() {
+  if (!starfield) return;
+
+  const context = starfield.getContext('2d');
+  const width = document.documentElement.clientWidth;
+  const height = window.innerHeight;
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+  const starCount = Math.ceil((width * height) / 15000);
+
+  starfield.width = width * pixelRatio;
+  starfield.height = height * pixelRatio;
+  starfield.style.width = `${width}px`;
+  starfield.style.height = `${height}px`;
+  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  context.clearRect(0, 0, width, height);
+
+  for (let index = 0; index < starCount; index += 1) {
+    const x = Math.random() * width;
+    const y = Math.random() * height;
+    const radius = Math.random() * 0.45 + 0.25;
+    const brightness = Math.random() * 0.45 + 0.4;
+    const tint = Math.random() > 0.84 ? '190, 215, 255' : '255, 255, 255';
+
+    context.beginPath();
+    context.fillStyle = `rgba(${tint}, ${brightness})`;
+    context.arc(x, y, radius, 0, Math.PI * 2);
+    context.fill();
+  }
+}
+
+renderStarfield();
+window.addEventListener('resize', renderStarfield);
+if (window.ResizeObserver) {
+  new ResizeObserver(renderStarfield).observe(document.body);
+}
+
+function updateScrollState() {
+  document.body.classList.toggle('has-scrolled', window.scrollY > 0);
+}
+
+window.addEventListener('scroll', updateScrollState, { passive: true });
+updateScrollState();
+
+function randomBetween(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomEdgePoint(edge) {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  if (edge === 'top') return { x: randomBetween(-width * 0.1, width * 1.05), y: -40 };
+  if (edge === 'right') return { x: width + 40, y: randomBetween(-height * 0.1, height * 1.05) };
+  if (edge === 'bottom') return { x: randomBetween(-width * 0.1, width * 1.05), y: height + 40 };
+  return { x: -230, y: randomBetween(-height * 0.1, height * 1.05) };
+}
+
+function launchShootingStar() {
+  if (!shootingStar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const edges = ['top', 'right', 'bottom', 'left'];
+  const startEdge = edges[Math.floor(Math.random() * edges.length)];
+  const endEdges = edges.filter((edge) => edge !== startEdge);
+  const endEdge = endEdges[Math.floor(Math.random() * endEdges.length)];
+  const start = randomEdgePoint(startEdge);
+  const end = randomEdgePoint(endEdge);
+  const angle = Math.atan2(end.y - start.y, end.x - start.x) * (180 / Math.PI);
+
+  shootingStar.style.setProperty('--start-x', `${start.x}px`);
+  shootingStar.style.setProperty('--start-y', `${start.y}px`);
+  shootingStar.style.setProperty('--end-x', `${end.x}px`);
+  shootingStar.style.setProperty('--end-y', `${end.y}px`);
+  shootingStar.style.setProperty('--angle', `${angle}deg`);
+  shootingStar.style.animation = 'none';
+  shootingStar.offsetHeight;
+  shootingStar.style.animation = `shooting-star-dart ${Math.round(randomBetween(260, 480))}ms linear forwards`;
+}
+
+function scheduleNextShootingStar() {
+  if (!shootingStar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const delay = Math.round(randomBetween(5000, 10000));
+  setTimeout(() => {
+    launchShootingStar();
+    scheduleNextShootingStar();
+  }, delay);
+}
+
+scheduleNextShootingStar();
 
 const carousels = carouselInstances.map((carousel) => {
   const track = carousel.querySelector('.carousel__track');
@@ -181,6 +273,8 @@ function updateNavIndicator(activeButton) {
 }
 
 function setPage(page) {
+  document.body.classList.toggle('home-page-active', page === 'home');
+
   if (page === 'home') {
     homePage.classList.remove('hidden');
     contentPages.classList.add('hidden');
