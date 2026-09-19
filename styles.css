@@ -108,6 +108,11 @@ main {
   padding-bottom: 0;
 }
 
+.page--content.page--projects,
+.page--content.page--other {
+  padding-bottom: 32px;
+}
+
 .hero {
   min-height: 100vh;
   display: grid;

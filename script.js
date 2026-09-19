@@ -273,6 +273,9 @@ function updateNavIndicator(activeButton) {
 }
 
 function setPage(page) {
+  contentPages.classList.toggle('page--projects', page === 'projects');
+  contentPages.classList.toggle('page--other', page === 'other');
+
   document.body.classList.toggle('home-page-active', page === 'home');
 
   if (page === 'home') {
