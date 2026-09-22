@@ -10,6 +10,8 @@ const navIndicator = document.querySelector('.nav-indicator');
 const carouselInstances = Array.from(document.querySelectorAll('.project__carousel'));
 const shootingStar = document.querySelector('.shooting-star');
 const starfield = document.querySelector('.starfield');
+const themeSwitch = document.getElementById('themeSwitch');
+let shootingStarTimer;
 
 function renderStarfield() {
   if (!starfield) return;
@@ -93,8 +95,9 @@ function scheduleNextShootingStar() {
   if (!shootingStar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const delay = Math.round(randomBetween(5000, 10000));
-  setTimeout(() => {
-    launchShootingStar();
+  clearTimeout(shootingStarTimer);
+  shootingStarTimer = setTimeout(() => {
+    if (!document.body.classList.contains('earth-mode')) launchShootingStar();
     scheduleNextShootingStar();
   }, delay);
 }
@@ -310,6 +313,21 @@ navButtons.forEach((button) => {
   button.addEventListener('click', () => {
     setPage(button.dataset.page);
   });
+});
+
+function setTheme(theme) {
+  const isEarth = theme === 'earth';
+  document.body.classList.toggle('earth-mode', isEarth);
+  themeSwitch.classList.toggle('is-earth', isEarth);
+  themeSwitch.setAttribute('aria-pressed', String(isEarth));
+  themeSwitch.querySelector('.theme-switch__label').textContent = isEarth ? 'Back to Space' : 'Back to Earth';
+  themeSwitch.querySelector('.theme-switch__icon').textContent = isEarth ? '✦' : '◐';
+  clearTimeout(shootingStarTimer);
+  scheduleNextShootingStar();
+}
+
+themeSwitch?.addEventListener('click', () => {
+  setTheme(document.body.classList.contains('earth-mode') ? 'space' : 'earth');
 });
 
 window.addEventListener('load', () => {
